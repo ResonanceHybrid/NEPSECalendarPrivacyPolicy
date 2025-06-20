@@ -1,439 +1,694 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Privacy Policy - NEPSE Calendar</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEPSE Calendar - Stay Updated with Nepal Stock Exchange Events</title>
+  <meta name="description" content="Never miss important NEPSE events. Get notifications for IPOs, rights issues, dividends, and more. Download NEPSE Calendar app now.">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      background: linear-gradient(135deg, #4CAF50 0%, #45a049 50%, #2E7D32 100%);
       min-height: 100vh;
-      padding: 20px;
-      color: #2c3e50;
-      line-height: 1.6;
+      color: #333;
+      overflow-x: hidden;
     }
-    
+
     .container {
-      max-width: 800px;
+      max-width: 1400px;
       margin: 0 auto;
+      padding: 0 20px;
     }
-    
-    .header-card {
-      background: white;
-      border-radius: 20px;
-      padding: 40px 30px;
-      text-align: center;
-      margin-bottom: 30px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+
+    /* Header */
+    .header {
+      padding: 20px 0;
       position: relative;
+      z-index: 10;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 15px 30px;
+      border-radius: 50px;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 800;
+    }
+
+    .logo-icon {
+      width: 45px;
+      height: 45px;
+      background: linear-gradient(135deg, #FF6B35, #F7931E);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+    }
+
+    .logo-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: white;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 8px 16px;
+      border-radius: 20px;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 60px 0;
+      position: relative;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 30px;
+      padding: 60px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 900;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #FF6B35, #4CAF50);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      color: #666;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    .feature-list li::before {
+      content: '✓';
+      background: linear-gradient(135deg, #4CAF50, #45a049);
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    /* App Screenshots */
+    .app-showcase {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .phone-mockup {
+      position: relative;
+      width: 280px;
+      height: 560px;
+      background: linear-gradient(145deg, #f0f0f0, #cacaca);
+      border-radius: 40px;
+      padding: 20px;
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.15),
+        inset 0 1px 2px rgba(255, 255, 255, 0.8);
+      border: 8px solid #2c2c2c;
       overflow: hidden;
     }
-    
-    .header-card::before {
+
+    .phone-mockup::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
       height: 4px;
-      background: linear-gradient(90deg, #4CAF50, #2196F3, #FF9800);
+      background: #333;
+      border-radius: 2px;
+      z-index: 2;
     }
-    
-    .privacy-icon {
+
+    .phone-mockup::after {
+      content: '';
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 4px;
+      background: #333;
+      border-radius: 2px;
+      z-index: 2;
+    }
+
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      border-radius: 32px;
+      overflow: hidden;
+      background: white;
+      position: relative;
+    }
+
+    .phone-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .phone-mockup.primary {
+      transform: scale(1.1) translateZ(0);
+      z-index: 2;
+    }
+
+    .phone-mockup.secondary {
+      transform: scale(0.9) translateZ(0);
+      opacity: 0.8;
+      z-index: 1;
+    }
+
+    /* Download Section */
+    .download-section {
+      margin-top: 40px;
+    }
+
+    .download-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 25px;
+      color: #333;
+      text-align: center;
+    }
+
+    .download-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 15px 25px;
+      background: linear-gradient(135deg, #000, #333);
+      color: white;
+      text-decoration: none;
+      border-radius: 15px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      min-width: 180px;
+      justify-content: center;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(135deg, #333, #555);
+    }
+
+    .download-btn svg {
+      width: 24px;
+      height: 24px;
+      fill: white;
+    }
+
+    .btn-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+    }
+
+    .btn-text small {
+      font-size: 0.8rem;
+      opacity: 0.8;
+      font-weight: 400;
+    }
+
+    .btn-text span {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    /* Features Section */
+    .features {
+      margin-top: 100px;
+      padding: 80px 0;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+    }
+
+    .features h2 {
+      text-align: center;
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 60px;
+      color: white;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px 30px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+    }
+
+    .feature-icon {
       width: 80px;
       height: 80px;
+      margin: 0 auto 25px;
       background: linear-gradient(135deg, #4CAF50, #45a049);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 20px;
-      box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+      box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
     }
-    
-    .privacy-icon svg {
+
+    .feature-icon svg {
       width: 40px;
       height: 40px;
       fill: white;
     }
-    
-    .main-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: #2c3e50;
-      margin-bottom: 10px;
-    }
-    
-    .subtitle {
-      font-size: 1.2rem;
-      color: #7f8c8d;
-      font-weight: 400;
-    }
-    
-    .section-card {
-      background: white;
-      border-radius: 16px;
-      padding: 24px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border-left: 4px solid transparent;
-    }
-    
-    .section-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-    }
-    
-    .section-header {
-      display: flex;
-      align-items: center;
-      margin-bottom: 16px;
-    }
-    
-    .section-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 12px;
-    }
-    
-    .section-icon svg {
-      width: 20px;
-      height: 20px;
-      fill: white;
-    }
-    
-    .section-title {
+
+    .feature-card h3 {
       font-size: 1.4rem;
-      font-weight: 600;
-      color: #2c3e50;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #333;
     }
-    
-    .section-content {
+
+    .feature-card p {
+      color: #666;
+      line-height: 1.7;
       font-size: 1rem;
-      color: #5a6c7d;
-      margin-bottom: 16px;
     }
-    
-    .subsection-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #34495e;
-      margin: 16px 0 8px 0;
-    }
-    
-    .bullet-list {
-      list-style: none;
-      padding: 0;
-    }
-    
-    .bullet-list li {
-      position: relative;
-      padding-left: 24px;
-      margin-bottom: 10px;
-      color: #5a6c7d;
-    }
-    
-    .bullet-list li::before {
-      content: '•';
-      position: absolute;
-      left: 0;
-      color: #3498db;
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
-    
-    .contact-link {
-      color: #3498db;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-    
-    .contact-link:hover {
-      color: #2980b9;
-      text-decoration: underline;
-    }
-    
+
+    /* Footer */
     .footer {
-      text-align: center;
-      color: #7f8c8d;
-      font-style: italic;
-      margin-top: 40px;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.7);
-      border-radius: 12px;
+      margin-top: 100px;
+      padding: 60px 0 40px;
+      background: rgba(0, 0, 0, 0.2);
       backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
-    
-    /* Color themes for different sections */
-    .overview { border-left-color: #3498db; }
-    .overview .section-icon { background: #3498db; }
-    
-    .security { border-left-color: #27ae60; }
-    .security .section-icon { background: #27ae60; }
-    
-    .advertising { border-left-color: #e74c3c; }
-    .advertising .section-icon { background: #e74c3c; }
-    
-    .storage { border-left-color: #9b59b6; }
-    .storage .section-icon { background: #9b59b6; }
-    
-    .connection { border-left-color: #1abc9c; }
-    .connection .section-icon { background: #1abc9c; }
-    
-    .notifications { border-left-color: #f39c12; }
-    .notifications .section-icon { background: #f39c12; }
-    
-    .third-party { border-left-color: #e67e22; }
-    .third-party .section-icon { background: #e67e22; }
-    
-    .rights { border-left-color: #34495e; }
-    .rights .section-icon { background: #34495e; }
-    
-    .changes { border-left-color: #f1c40f; }
-    .changes .section-icon { background: #f1c40f; }
-    
-    .contact { border-left-color: #16a085; }
-    .contact .section-icon { background: #16a085; }
-    
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      color: white;
+      margin-bottom: 30px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .footer-links a:hover {
+      color: #4CAF50;
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 40px;
+        text-align: center;
+      }
+
+      .app-showcase {
+        gap: 15px;
+      }
+
+      .phone-mockup {
+        width: 240px;
+        height: 480px;
+      }
+    }
+
     @media (max-width: 768px) {
-      body {
-        padding: 10px;
-      }
-      
-      .main-title {
-        font-size: 2rem;
-      }
-      
-      .section-card {
+      .nav {
+        flex-direction: column;
+        gap: 20px;
         padding: 20px;
       }
-      
-      .header-card {
+
+      .nav-links {
+        gap: 20px;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+
+      .hero-content {
         padding: 30px 20px;
+        margin: 0 10px;
+      }
+
+      .app-showcase {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .phone-mockup {
+        width: 280px;
+        height: 560px;
+      }
+
+      .phone-mockup.primary,
+      .phone-mockup.secondary {
+        transform: none;
+        opacity: 1;
+      }
+
+      .download-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .features h2 {
+        font-size: 2.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .download-btn {
+        min-width: 160px;
+        padding: 12px 20px;
+      }
+
+      .phone-mockup {
+        width: 240px;
+        height: 480px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Header Card -->
-    <div class="header-card">
-      <div class="privacy-icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11.5C15.4,11.5 16,12.4 16,13V16C16,17.4 15.4,18 14.8,18H9.2C8.6,18 8,17.4 8,16V13C8,12.4 8.6,11.5 9.2,11.5V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.5,8.7 10.5,10V11.5H13.5V10C13.5,8.7 12.8,8.2 12,8.2Z"/>
-        </svg>
-      </div>
-      <h1 class="main-title">Privacy Policy</h1>
-      <p class="subtitle">Your privacy is important to us</p>
-    </div>
-
-    <!-- Overview Section -->
-    <div class="section-card overview">
-      <div class="section-header">
-        <div class="section-icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z"/>
-          </svg>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <div class="logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M9,10V12H7V10H9M13,10V12H11V10H13M17,10V12H15V10H17M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5C3.89,21 3,20.1 3,19V5A2,2 0 0,1 5,3H6V1H8V3H16V1H18V3H19M19,19V8H5V19H19M9,14V16H7V14H9M13,14V16H11V14H13M17,14V16H15V14H17Z"/>
+            </svg>
+          </div>
+          NEPSE CALENDAR
         </div>
-        <h2 class="section-title">Overview</h2>
-      </div>
-      <div class="section-content">
-        NEPSE Calendar ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we handle information when you use our mobile application that provides Nepal Stock Exchange (NEPSE) event information.
-      </div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <!-- Information We Don't Collect Section -->
-    <div class="section-card security">
-      <div class="section-header">
-        <div class="section-icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M12,12H19C18.47,16.11 15.72,19.78 12,20.92V12H5V6.3L12,3.19M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z"/>
-          </svg>
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>NEPSE CALENDAR</h1>
+          <p>Never miss important Nepal Stock Exchange events. Get instant notifications for IPOs, rights issues, dividends, AGMs, and more. Stay ahead in your investment journey.</p>
+          
+          <ul class="feature-list">
+            <li>Upcoming IPO | FPO</li>
+            <li>Right Shares</li>
+            <li>Promotor Unlocks</li>
+            <li>NEPSE Events | AGM/SGM and More</li>
+          </ul>
+
+          <!-- Download Section -->
+          <div class="download-section">
+            <h2 class="download-title">Download Now</h2>
+            <div class="download-buttons">
+              <!-- Google Play Store -->
+              <a href="#" class="download-btn" id="playstore-btn">
+                <svg viewBox="0 0 24 24">
+                  <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.84 20.24,13.16L17.94,14.5L15.54,12.03L17.94,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                </svg>
+                <div class="btn-text">
+                  <small>GET IT ON</small>
+                  <span>Google Play</span>
+                </div>
+              </a>
+
+              <!-- App Store -->
+              <a href="#" class="download-btn" id="appstore-btn">
+                <svg viewBox="0 0 24 24">
+                  <path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.19 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z"/>
+                </svg>
+                <div class="btn-text">
+                  <small>Download on the</small>
+                  <span>App Store</span>
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
-        <h2 class="section-title">Information We Do NOT Collect</h2>
-      </div>
-      <div class="section-content">
-        NEPSE Calendar is designed with privacy in mind. We do NOT directly collect, store, or process any of the following:
-      </div>
-      <ul class="bullet-list">
-        <li>Personal identification information</li>
-        <li>Contact information (email, phone numbers)</li>
-        <li>Location data or GPS coordinates</li>
-        <li>Financial information or investment data</li>
-        <li>Login credentials or authentication data</li>
-        <li>User behavior analytics or tracking data</li>
-      </ul>
-    </div>
 
-    <!-- Advertising Section -->
-    <div class="section-card advertising">
-      <div class="section-header">
-        <div class="section-icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M18.5,4L19.66,8.35L18.7,8.61C18.25,7.74 17.79,6.87 17.26,6.43C16.73,6 16.11,6 15.5,6H13V16.5C13,17 13,17.5 13.5,17.5H14V19H10V17.5H10.5C11,17.5 11,17 11,16.5V6H8.5C7.89,6 7.27,6 6.74,6.43C6.21,6.87 5.75,7.74 5.3,8.61L4.34,8.35L5.5,4H18.5Z"/>
-          </svg>
+        <!-- App Screenshots -->
+        <div class="app-showcase">
+          <div class="phone-mockup secondary">
+            <div class="phone-screen">
+              <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjU2MCIgdmlld0JveD0iMCAwIDI4MCA1NjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iNTYwIiBmaWxsPSJ3aGl0ZSIvPgo8dGV4dCB4PSIxNDAiIHk9IjI4MCIgZmlsbD0iIzY2NiIgZm9udC1zaXplPSIxNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+TkVQU0UgQ2FsZW5kYXI8L3RleHQ+CjwvZXZnPgo=" alt="NEPSE Calendar App - Calendar View">
+            </div>
+          </div>
+          <div class="phone-mockup primary">
+            <div class="phone-screen">
+              <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjU2MCIgdmlld0JveD0iMCAwIDI4MCA1NjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iNTYwIiBmaWxsPSJ3aGl0ZSIvPgo8dGV4dCB4PSIxNDAiIHk9IjI4MCIgZmlsbD0iIzY2NiIgZm9udC1zaXplPSIxNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+TkVQU0UgQ2FsZW5kYXI8L3RleHQ+CjwvZXZnPgo=" alt="NEPSE Calendar App - IPO Listings">
+            </div>
+          </div>
+          <div class="phone-mockup secondary">
+            <div class="phone-screen">
+              <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjU2MCIgdmlld0JveD0iMCAwIDI4MCA1NjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iNTYwIiBmaWxsPSJ3aGl0ZSIvPgo8dGV4dCB4PSIxNDAiIHk9IjI4MCIgZmlsbD0iIzY2NiIgZm9udC1zaXplPSIxNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+TkVQU0UgQ2FsZW5kYXI8L3RleHQ+CjwvZXZnPgo=" alt="NEPSE Calendar App - Details View">
+            </div>
+          </div>
         </div>
-        <h2 class="section-title">Advertising</h2>
-      </div>
-      <div class="section-content">
-        NEPSE Calendar displays advertisements through Google AdMob to support the free app. Google AdMob may collect certain information for advertising purposes:
-      </div>
-      <h3 class="subsection-title">Information collected by Google AdMob:</h3>
-      <ul class="bullet-list">
-        <li>Device identifiers (Advertising ID)</li>
-        <li>Device information (model, operating system)</li>
-        <li>Network information (IP address)</li>
-        <li>Ad interaction data (views, clicks)</li>
-        <li>Approximate location (based on IP address)</li>
-      </ul>
-      <div class="section-content">
-        This data is used solely by Google to display relevant ads and measure ad performance. We do not have access to this information.
       </div>
     </div>
+  </section>
 
-    <!-- Local Data Storage Section -->
-    <div class="section-card storage">
-      <div class="section-header">
-        <div class="section-icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M6,2H18A2,2 0 0,1 20,4V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V4A2,2 0 0,1 6,2M12,4A6,6 0 0,0 6,10C6,13.31 8.69,16 12.1,16L11.22,18.15C11.22,18.15 12.78,21 12,21C11.22,21 12.78,18.15 12.78,18.15L11.9,16C15.31,16 18,13.31 18,10A6,6 0 0,0 12,4M12,6A4,4 0 0,1 16,10A4,4 0 0,1 12,14A4,4 0 0,1 8,10A4,4 0 0,1 12,6Z"/>
-          </svg>
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="container">
+      <h2>Key Features</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M21,19V20H3V19L5,17V11C5,7.9 7.03,5.17 10,4.29C10,4.19 10,4.1 10,4A2,2 0 0,1 12,2A2,2 0 0,1 14,4C14,4.1 14,4.19 14,4.29C16.97,5.17 19,7.9 19,11V17L21,19M14,21A2,2 0 0,1 12,23A2,2 0 0,1 10,21"/>
+            </svg>
+          </div>
+          <h3>Smart Notifications</h3>
+          <p>Get instant push notifications for IPOs, rights issues, dividends, and important NEPSE announcements. Never miss a critical investment opportunity.</p>
         </div>
-        <h2 class="section-title">Local Data Storage</h2>
-      </div>
-      <div class="section-content">
-        The app stores NEPSE event data locally on your device for offline functionality. This data includes only public NEPSE event information (dates, event names, types) and contains no personal information. This data is stored solely on your device and is not transmitted to any external servers.
-      </div>
-    </div>
 
-    <!-- Internet Connection Section -->
-    <div class="section-card connection">
-      <div class="section-header">
-        <div class="section-icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M3,2V8H2V9H3V15H2V16H3V22H4V16H5V15H4V9H5V8H4V2H3M6,2V8H5V9H6V15H5V16H6V22H7V16H8V15H7V9H8V8H7V2H6M12.5,4C16.09,4 19,6.91 19,10.5C19,12.5 18.15,14.3 16.78,15.58L14.63,13.43C15.41,12.65 15.9,11.62 15.9,10.5C15.9,8.62 14.38,7.1 12.5,7.1C10.62,7.1 9.1,8.62 9.1,10.5C9.1,11.62 9.59,12.65 10.37,13.43L8.22,15.58C6.85,14.3 6,12.5 6,10.5C6,6.91 8.91,4 12.5,4M12.5,8.5C13.6,8.5 14.5,9.4 14.5,10.5C14.5,11.6 13.6,12.5 12.5,12.5C11.4,12.5 10.5,11.6 10.5,10.5C10.5,9.4 11.4,8.5 12.5,8.5M12.5,14L17,18.5L12.5,23L8,18.5L12.5,14Z"/>
-          </svg>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M9,10V12H7V10H9M13,10V12H11V10H13M17,10V12H15V10H17M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5C3.89,21 3,20.1 3,19V5A2,2 0 0,1 5,3H6V1H8V3H16V1H18V3H19M19,19V8H5V19H19M9,14V16H7V14H9M13,14V16H11V14H13M17,14V16H15V14H17Z"/>
+            </svg>
+          </div>
+          <h3>Complete Event Calendar</h3>
+          <p>View all upcoming NEPSE events in a beautifully designed calendar interface with detailed information for each event.</p>
         </div>
-        <h2 class="section-title">Internet Connection</h2>
-      </div>
-      <div class="section-content">
-        The app requires an internet connection to fetch the latest NEPSE event and to display advertisements through Google AdMob. When offline, the app functions using previously downloaded data. No personal data is transmitted during these connections.
-      </div>
-    </div>
 
-    <!-- Push Notifications Section -->
-    <div class="section-card notifications">
-      <div class="section-header">
-        <div class="section-icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M21,19V20H3V19L5,17V11C5,7.9 7.03,5.17 10,4.29C10,4.19 10,4.1 10,4A2,2 0 0,1 12,2A2,2 0 0,1 14,4C14,4.1 14,4.19 14,4.29C16.97,5.17 19,7.9 19,11V17L21,19M14,21A2,2 0 0,1 12,23A2,2 0 0,1 10,21"/>
-          </svg>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6Z"/>
+            </svg>
+          </div>
+          <h3>Offline Access</h3>
+          <p>Access your saved events and information even when offline. Essential data is stored locally for uninterrupted access.</p>
         </div>
-        <h2 class="section-title">Push Notifications</h2>
       </div>
-      <div class="section-content">
-        To keep you updated with the latest NEPSE offerings and important announcements, we use push notifications through OneSignal service. Here's what you should know:
-      </div>
-      <h3 class="subsection-title">What we collect for notifications:</h3>
-      <ul class="bullet-list">
-        <li>A unique device token (to identify your device for sending notifications)</li>
-        <li>Basic device information (device type and operating system)</li>
-        <li>Notification preferences and delivery status</li>
-      </ul>
-      <h3 class="subsection-title">Important notes:</h3>
-      <ul class="bullet-list">
-        <li>You can turn off notifications anytime in your device settings</li>
-        <li>We only send notifications about NEPSE events and updates</li>
-        <li>No personal information is shared with the notification service</li>
-        <li>Notification data is handled securely by OneSignal according to their privacy policy</li>
-      </ul>
     </div>
+  </section>
 
-    <!-- Third-Party Services Section -->
-    <div class="section-card third-party">
-      <div class="section-header">
-        <div class="section-icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M10.59,13.41C11,13.8 11,14.4 10.59,14.81C10.2,15.2 9.6,15.2 9.19,14.81L7.77,13.39L9.19,12C9.6,11.6 10.2,11.6 10.59,12C11,12.4 11,13 10.59,13.41M14.19,14.81L12,17L9.81,14.81L12,12.63L14.19,14.81M4,5V17L6,19H18L20,17V5L18,3H6L4,5M6,7L18,7V17H6V7Z"/>
-          </svg>
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-content">
+        <div class="logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M9,10V12H7V10H9M13,10V12H11V10H13M17,10V12H15V10H17M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5C3.89,21 3,20.1 3,19V5A2,2 0 0,1 5,3H6V1H8V3H16V1H18V3H19M19,19V8H5V19H19M9,14V16H7V14H9M13,14V16H11V14H13M17,14V16H15V14H17Z"/>
+            </svg>
+          </div>
+          NEPSE CALENDAR
         </div>
-        <h2 class="section-title">Third-Party Services</h2>
+        <ul class="footer-links">
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="mailto:nepsecalendar@gmail.com">Contact</a></li>
+          <li><a href="#features">Features</a></li>
+        </ul>
       </div>
-      <div class="section-content">
-        NEPSE Calendar uses three third-party services: Firebase Remote Config for delivering updated event data, OneSignal for sending push notifications about NEPSE updates, and Google AdMob for displaying advertisements. We do not use any analytics, tracking, or other advertising services. Google AdMob operates according to Google's Privacy Policy, and OneSignal processes only the minimal data necessary for notification delivery.
+      <div class="footer-bottom">
+        © 2025 NEPSE Calendar. All rights reserved.
       </div>
     </div>
+  </footer>
 
-    <!-- Your Rights Section -->
-    <div class="section-card rights">
-      <div class="section-header">
-        <div class="section-icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M12,2A2,2 0 0,1 14,4C14,4.74 13.6,5.39 13,5.73V7H14A7,7 0 0,1 21,14H22A1,1 0 0,1 23,15V18A1,1 0 0,1 22,19H21V20A2,2 0 0,1 19,22H5A2,2 0 0,1 3,20V19H2A1,1 0 0,1 1,18V15A1,1 0 0,1 2,14H3A7,7 0 0,1 10,7H11V5.73C10.4,5.39 10,4.74 10,4A2,2 0 0,1 12,2M7,13A1,1 0 0,0 6,14A1,1 0 0,0 7,15A1,1 0 0,0 8,14A1,1 0 0,0 7,13M17,13A1,1 0 0,0 16,14A1,1 0 0,0 17,15A1,1 0 0,0 18,14A1,1 0 0,0 17,13Z"/>
-          </svg>
-        </div>
-        <h2 class="section-title">Your Rights</h2>
-      </div>
-      <div class="section-content">
-        Since we do not collect personal data directly, most data protection rights are not applicable. However, you have the right to:
-      </div>
-      <ul class="bullet-list">
-        <li>Use the app without providing personal information</li>
-        <li>Clear locally stored data by uninstalling the app</li>
-        <li>Control advertising personalization through device settings</li>
-        <li>Use the app offline without any data transmission</li>
-        <li>Contact us with any privacy-related questions</li>
-      </ul>
-    </div>
+  <script>
+    // Add smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
 
-    <!-- Changes to Policy Section -->
-    <div class="section-card changes">
-      <div class="section-header">
-        <div class="section-icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z"/>
-          </svg>
-        </div>
-        <h2 class="section-title">Changes to This Privacy Policy</h2>
-      </div>
-      <div class="section-content">
-        We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date. You are advised to review this Privacy Policy periodically for any changes.
-      </div>
-    </div>
+    // Add click tracking for download buttons (replace with your actual links)
+    document.getElementById('playstore-btn').addEventListener('click', function(e) {
+      e.preventDefault();
+      // Replace with your actual Google Play Store link
+      // window.open('https://play.google.com/store/apps/details?id=your.app.package', '_blank');
+      alert('Replace this with your Google Play Store link');
+    });
 
-    <!-- Contact Section -->
-    <div class="section-card contact">
-      <div class="section-header">
-        <div class="section-icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M22,6C22,4.89 21.1,4 20,4H4A2,2 0 0,0 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6M20,6L12,11L4,6H20M20,18H4V8L12,13L20,8V18Z"/>
-          </svg>
-        </div>
-        <h2 class="section-title">Contact Us</h2>
-      </div>
-      <div class="section-content">
-        If you have any questions about this Privacy Policy, please contact us at:<br><br>
-        <a href="mailto:nepsecalendar@gmail.com" class="contact-link">nepsecalendar@gmail.com</a>
-      </div>
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">
-      This privacy policy is effective as of May 2025
-    </div>
-  </div>
-</body>
-</html>
+    document.getElementById('appstore-btn').addEventListener('click', function(e) {
+      e.preventDefault();
+      // Replace with your actual App Store link
+      // window
